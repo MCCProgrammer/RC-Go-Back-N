@@ -29,12 +29,6 @@ python3 receiver.py 127.0.0.1 9000 data.bin copy.bin 1024
 
 The sender logs each block it sends and each timeout/retransmission.
 
-## Known issues
-
-Tested again in 2026 with Python 3.14, outside the course's lab machines:
-
-- The receiver reads `block size + 20` bytes per datagram, but on Python 3.8+ a pickled 1024-byte block takes 1046 bytes, so blocks arrive truncated. Pickling with `protocol=3` (or a larger receive buffer) fixes it — with that change, files arrive intact.
-- After the last block, the receiver keeps waiting instead of exiting.
 
 ## What I learned
 
